@@ -29,7 +29,7 @@ setTimeout(function() {
 				this[name].stop();
 				this[name] = null;
 				triggerMblockEvent('CoinHive (inline)');
-        chrome.tabs.sendMessage(details.tabId, {message: "AHNMO_DETECTED"}); // XXX: THIS
+        console.log("IS511-DETECTED");
 			}
 
 			// Check Mineralt miners
@@ -44,6 +44,7 @@ setTimeout(function() {
 				this[name].stop();
 				this[name] = null;
 				triggerMblockEvent('Mineralt (inline)');
+        console.log("IS511-DETECTED");
 			}
 
 			// Check Webminerpool miners
@@ -57,7 +58,7 @@ setTimeout(function() {
 				this[name].stopMining();
 				this[name] = null;
 				triggerMblockEvent('Webminerpool (inline)');
-        chrome.tabs.sendMessage(details.tabId, {message: "AHNMO_DETECTED"}); // XXX: THIS
+        console.log("IS511-DETECTED");
 			}
 
 		} catch(mberr) {}
