@@ -8,7 +8,7 @@
 		    var script = document.createElement('script');
 		    script.setAttribute('type', 'text/javascript');
 		    script.setAttribute('src', chrome.extension.getURL('js/minerkill.js'));
-		    node.appendChild(script);    		
+		    node.appendChild(script);
     	}
     }
 
@@ -29,3 +29,9 @@
 	}, false);
 
 }());
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+ if(sender.id == chrome.runtime.id && request.message == "AHNMO_DETECTED") {
+   console.log("IS511-DETECTED");
+ }
+});

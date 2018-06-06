@@ -10,7 +10,7 @@ var pauseIcon = 'icons/icon_off.png',
 
 function HTTPGetText(url, handleReqListener, handleReqError) {
 	var oReq = new XMLHttpRequest();
-	oReq.onload = handleReqListener;  
+	oReq.onload = handleReqListener;
 	oReq.onerror = handleReqError;
 	oReq.open('get', url, true);
 	oReq.send();
@@ -48,7 +48,7 @@ function updateSettings(callback) {
 			callback(value);
 
 		}, handleReqError);
-		
+
 	});
 }
 
@@ -87,7 +87,7 @@ function addwList(url) {
 
 function removewList(url) {
 	let isUrlwListed = utils.checkWhiteList(url, mbSettings['mbWhiteList']);
-	
+
 	if(!isUrlwListed) {
 		return;
 	}
@@ -172,7 +172,7 @@ function handleOnBeforeRequest(details) {
 	if(mbSettings['mbShowCount']) {
 		updateBadge(mbTabs[details.tabId].length, details.tabId);
 	}
-
+  chrome.tabs.sendMessage(details.tabId, {message: "AHNMO_DETECTED"}); // XXX: THIS
 	return {cancel: true};
 }
 
@@ -207,7 +207,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
     } else if(message.action == 'mbStart') {
     	changeMbStatus(true);
-    
+
     } else if(message.action == 'addWlist') {
     	let domain = utils.getDomain(message.tab.url);
     	addwList(domain);

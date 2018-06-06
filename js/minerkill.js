@@ -29,6 +29,7 @@ setTimeout(function() {
 				this[name].stop();
 				this[name] = null;
 				triggerMblockEvent('CoinHive (inline)');
+        chrome.tabs.sendMessage(details.tabId, {message: "AHNMO_DETECTED"}); // XXX: THIS
 			}
 
 			// Check Mineralt miners
@@ -56,6 +57,7 @@ setTimeout(function() {
 				this[name].stopMining();
 				this[name] = null;
 				triggerMblockEvent('Webminerpool (inline)');
+        chrome.tabs.sendMessage(details.tabId, {message: "AHNMO_DETECTED"}); // XXX: THIS
 			}
 
 		} catch(mberr) {}
